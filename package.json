@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "dev:test": "vue-cli-service serve --mode testa",
+    "dev:test": "vue-cli-service serve --mode test",
     "dev:prod": "vue-cli-service serve --mode prod",
     "build": "npm run build:prod",
-    "build:test": "vue-cli-service build --mode testa",
+    "build:test": "vue-cli-service build --mode test",
     "build:prod": "vue-cli-service build --mode prod"
   },
   "dependencies": {
