@@ -1,5 +1,5 @@
 import sha1 from 'js-sha1'
-import {bridge} from '../jsbridge';
+import {bridge} from '@/jsbridge';
 import dsBridge from "../jsbridge/dsBridge";
 
 const addSign = (url, method, data) => {

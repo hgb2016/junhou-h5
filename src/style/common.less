@@ -1,9 +1,3 @@
-:root {
-  --van-blue:#FFB24D ;
-  --van-primary-color: #FFB24D ;
-}
-
-
 body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -12,12 +6,37 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
-.van-hairline--bottom::after {
-  border-bottom-width: 0px;
+
+:root {
+  --van-blue: #FFB24D;
+  --van-primary-color: #FFB24D;
 }
-.toast-width{
+
+//:root:root 可以显式地让你所写内容的优先级更高一些. 覆盖vant样式全局样式
+:root:root {
+  .submit-btn {
+    border: none;
+    height: 13vw;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: var(--van-primary-color);
+    border-radius: 15px;
+  }
+
+  .van-hairline--bottom::after {
+    border-bottom-width: 0px;
+  }
+}
+
+.primary-color {
+  color: var(--van-primary-color);
+}
+
+.toast-width {
   width: auto;
 }
+
 @keyframes scale-ani {
   0% {
     transform: scale(1);
@@ -29,30 +48,13 @@ body {
     transform: scale(1);
   }
 }
+
 .scale_btn {
   -webkit-animation-name: scale-ani;
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-duration: 1s;
 }
-.van-overlay{
-  z-index: 3000;
-}
-.lab-loan-feild{
-  color: #FFB24D;
-  font-size: 24px;
-  width: auto;
-}
-
-.submit-btn {
-  border: none;
-  font-size: 16px;
-  font-weight: bold;
-  color: #262626;
-  background: linear-gradient(90deg, #FFE14D 0%, #FFB24D 100%) !important;
-  border-radius: 3px !important;
-}
-
 
 .underline {
   text-decoration: underline;
@@ -73,28 +75,31 @@ body {
 .align-center {
   text-align: center;
 }
-
-/*带有fixed navbar的容器，需要一个padding*/
-.navbar-con {
-  padding-top: 44px;
-}
-.empty-img{
-  padding-top: 30vw !important;
-}
-.padding59 {
-  padding-top: 44px;
-}
-
-.navbar-con-16 {
-  padding-top: 62px;
-}
-
-.top-mar-16 {
-  margin-top: 16px;
-}
-
+/**flex相关属性 */
 .flex {
   display: flex;
+}
+.f-r-c{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+}
+.f-r{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+}
+.f-c{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+.f-c-c{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
 }
 
 .padding10 {
@@ -105,205 +110,3 @@ body {
   margin: 10px;
 }
 
-/*简单的卡片样式*/
-.card-box {
-  margin: 10px 0;
-  background-color: white;
-}
-
-.card-box:active {
-  background-color: #fafafa;
-}
-
-.white-click {
-  background-color: white;
-}
-
-.white-click:active {
-  background-color: #fafafa;
-}
-.view-details-btn{
-  background: white;
-  border: none;
-  color: #8C8C8C;
-}
-/*左右布局*/
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 0;
-}
-.flex-c-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.flex-r-center {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.left-red-line {
-  border-left: solid var(--van-primary-color) 3px;
-  padding-left: 3px;
-  background-color: white;
-}
-
-.white-txt {
-  color: #ffffff;
-}
-
-.red-txt {
-  color: #595959;
-  text-decoration: underline;
-}
-
-.bold-txt {
-  font-weight: bold;
-}
-
-.gray-txt {
-  color: #969799;
-}
-
-
-
-.style-btn {
-  border: none;
-  background-image: linear-gradient(131deg, #FFAF04 0%, #FF5F04 100%);
-}
-
-.mu-input__focus {
-  color: var(--van-primary-color);
-}
-
-.shadow-box {
-  -webkit-box-shadow: 0 0 12px #ebedf0;
-  box-shadow: 0 0 12px #ebedf0;
-}
-
-.mu-option.is-selected .mu-item {
-  color: var(--van-primary-color);
-}
-
-.white-back {
-  background-color: white;
-}
-
-.mu-dialog-height {
-  height: 100% !important;
-  max-height: 100% !important;
-}
-
-.mu-dialog-height > div {
-  height: 100% !important;
-  max-height: 100% !important;
-}
-
-.mu-input-focus-line {
-  height: 1px;
-}
-
-.mu-input-line.disabled {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
-}
-
-.navbar-con-height {
-  height: 44px;
-}
-
-.van-nav-bar {
-  .van-nav-bar__title {
-    font-weight: bold;
-  }
-  .van-nav-bar__text {
-    font-size: 17px;
-    font-weight: bold;
-  }
-  z-index: 100;
-  height: 44px;
-}
-
-.udagree-pop {
-  width: 100vw;
-  height: 100vh;
-  overflow-y: hidden;
-}
-.van-tabs__nav--card .van-tab.van-tab--active {
-  /* color: #fff; */
-  background-color: var(--van-primary-color);
-  border-radius: 4px;
-}
-
-.van-tabs__nav--card .van-tab {
-  color: var(--van-primary-color);
-  border-right: 4px solid #F1F1F1;
-}
-.van-tabs__nav--card {
-  box-sizing: border-box;
-  height: 36px;
-  margin: 0 16px;
-  border: 4px solid #F1F1F1;
-  border-radius: 4px;
-}
-.van-empty__image {
-  width: 227px;
-  height: 150px;
-}
-.van-tabs--card > .van-tabs__wrap {
-  height: 36px;
-}
-.amount-txt {
-  margin-top: 8px;
-  font-weight: bold;
-  color: #262626;
-  font-size: 28px;
-}
-//设置全局输入框样式
-.mu-input-line {
-  background-color:transparent;
-  height: 10.6vw;
-  border: 0.5px solid ;
-  border-radius: 5px;
-}
-.mu-input-line.disabled {
-  background-color:transparent;
-  height: 10.6vw;
-  border: 0.5px solid ;
-  border-radius: 5px;
-
-}
-.mu-text-field-input {
-  background: none;
-  border-radius: 0px;
-  height: 10.6vw;
-  padding-left: 4vw;
-  z-index: 100;
-}
-.mu-input-focus-line {
-  height: 0px;
-}
-.mu-select-input{
-  padding-left: 4vw;
-  height: 10.6vw;
-}
-
-.mu-input-line.disabled {
-  border-bottom: 0.5px solid #CCCCCC ;
-}
-
-.mu-input.has-label .mu-input-label.float {
-  color: #CCCCCC;
-}
-.mu-input-line.disabled {
-  border-bottom: 1px solid ;
-}
-.mu-input{
-  color: #cccccc;
-  margin-bottom: 0px;
-}
-.mu-input-help {
-  bottom: 3.5vw;
-  right: 3vw;
-  color: #BFBFBF;
-}

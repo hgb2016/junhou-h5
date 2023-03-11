@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="align-center">
+    <van-button class="submit-btn" type="primary">click</van-button>
+    <div class="primary-color">style</div>
   </div>
 </template>
 
