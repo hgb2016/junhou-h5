@@ -6,12 +6,6 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
-
-:root {
-  --van-blue: #FFB24D;
-  --van-primary-color: #FFB24D;
-}
-
 //:root:root 可以显式地让你所写内容的优先级更高一些. 覆盖vant样式全局样式
 :root:root {
   .submit-btn {
@@ -22,10 +16,6 @@ body {
     color: white;
     background: var(--van-primary-color);
     border-radius: 15px;
-  }
-
-  .van-hairline--bottom::after {
-    border-bottom-width: 0px;
   }
 }
 
@@ -79,34 +69,37 @@ body {
 .flex {
   display: flex;
 }
-.f-r-c{
+.f-r-ac-jc{
   display: flex;
   flex-direction:row;
   align-items: center;
   justify-content: center;
 }
-.f-r{
+.f-r-ac{
   display: flex;
   flex-direction:row;
   align-items: center;
 }
-.f-c{
+.f-c-ac{
   display: flex;
   flex-direction:column;
   align-items: center;
 }
-.f-c-c{
+.f-c-ac-jc{
   display: flex;
   flex-direction:column;
   align-items: center;
   justify-content: center;
 }
-
-.padding10 {
-  padding: 10px;
+f-r-ac-sb{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: space-between;
 }
-
-.margin10 {
-  margin: 10px;
+f-r-ac-sa{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: space-around;
 }
-
