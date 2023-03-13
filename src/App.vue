@@ -25,9 +25,10 @@ import {StyleProvider} from '@varlet/ui'
 export default {
   name: "app",
   setup() {
+
     const themeVars = {
-      primaryColor: "#FFB24D",
-      '--color-primary': '#FFB24D'
+      '--van-blue': "#FFB24D",//vant主题色
+      '--color-primary': '#FFB24D' //varlet主题色
     };
     StyleProvider(themeVars)
     return {
