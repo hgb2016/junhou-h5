@@ -5,19 +5,30 @@
 </template>
 
 <script>
+import { mapState } from 'pinia'
+import {useStore} from "@/store";
+
 export default {
-
   name: "tab-my-apply",
-  data() {
-    return {
-
+  computed:{
+    ...mapState(useStore,['userInfo','applyInfo','loginData'])
+  },
+  setup(){
+    const store= useStore();
+    return{
+      store
     }
   },
   mounted() {
   },
   methods:{
-    getData(){
-      this._showToast("dada");
+    setData() {
+      this.store.userInfo = "dkasjdkaj";
+      this.store.applyInfo = {data:"我是"};
+      this.store.loginData = "1241";
+    },
+    clearData(){
+      this.store.$reset();
     }
   }
 }
