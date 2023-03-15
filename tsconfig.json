@@ -1,5 +1,0 @@
-{
-  "compilerOptions": {
-    "types": ["@varlet/ui/types/global"]
-  }
-}

@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunktest"]=self["webpackChunktest"]||[]).push([[598],{8598:function(e,n,t){t.r(n),t.d(n,{default:function(){return d}});var r=t(6252);const a={class:"align-center"};function s(e,n,t,s,u,c){return(0,r.wg)(),(0,r.iD)("div",a)}var u={name:"TabMine",data(){return{}},methods:{}},c=t(3744);const i=(0,c.Z)(u,[["render",s]]);var d=i}}]);

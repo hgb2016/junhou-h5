@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunktest"]=self["webpackChunktest"]||[]).push([[579],{1579:function(e,t,n){n.r(t),n.d(t,{default:function(){return d}});var a=n(6252);function u(e,t,n,u,r,s){return(0,a.wg)(),(0,a.iD)("div")}var r={name:"SplashPage",mounted(){this._routePush("main")}},s=n(3744);const c=(0,s.Z)(r,[["render",u],["__scopeId","data-v-8cd6a71e"]]);var d=c}}]);
