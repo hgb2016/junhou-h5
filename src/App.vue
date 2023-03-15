@@ -1,5 +1,5 @@
 <template>
-  <van-config-provider :theme-vars="themeVars">
+  <van-config-provider theme="dark" :theme-vars="themeVars">
     <div id="app">
       <!--缓存的页面-->
       <router-view v-slot="{ Component }" v-if="$route.meta.keepAlive">
