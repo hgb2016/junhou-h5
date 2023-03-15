@@ -8,7 +8,7 @@
   export default {
     name: "SplashPage",
     mounted() {
-      this._routePush('main');
+      this._routePush('PhoneLogin');
     },
   }
 </script>

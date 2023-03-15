@@ -1,9 +1,14 @@
-import {Dialog, Toast} from 'vant';
-
+import {showConfirmDialog,showDialog, showToast,showSuccessToast} from 'vant';
+import {useStore} from "@/store";
 const baseMixin= {
 
   methods: {
-
+    _getUseStore(){
+      const store= useStore();
+      return{
+        store
+      }
+    },
     // 统一刷新并缓存用户信息到vuex
     _refreshCustomerInfo(succ, error) {
       this.$http.post(this.$urls.user.ORIGINAL_PERSONAL_INFO).then(res => {
@@ -51,21 +56,23 @@ const baseMixin= {
      * @private
      */
     _showAlert(msg, confirm) {
-      Dialog.alert({
-        message: msg,
-        confirmButtonText: this.$t('confirm'),
-      }).then(confirm)
+      showDialog({
+        message:msg
+      })
+        .then(confirm);
     },
 
     _showConfirm(msg, confirm, cancel) {
-      Dialog.confirm({
+      showConfirmDialog({
         title: this.$t('confirm'),
-        message: msg
-      }).then(confirm)
-        .catch(cancel);
+        message:msg
+      }).then(confirm).
+      catch(cancel);
+
+
     },
     _showAlertConfirm(msg, confirm, cancel) {
-      Dialog.confirm({
+      showConfirmDialog({
         message: msg
       }).then(confirm)
         .catch(cancel);
@@ -182,13 +189,13 @@ const baseMixin= {
     // 显示Toast
     _showToast(msg) {
       if (msg) {
-        Toast(msg);
+        showToast(msg);
       }
     },
     // 显示Toast bottom
     _showBottomToast(msg) {
       if (msg) {
-        Toast({
+        showToast({
           message: msg,
           position: 'bottom',
         });
@@ -211,23 +218,21 @@ const baseMixin= {
       this._routePush('main');
     },
 
+
     /**
      * 显示Loading
      */
     _showLoading() {
-      Toast.loading({
-        overlay: true,
-        duration: 0,
-        loadingType: 'spinner',
-        message: 'Loading...'
-      });
-    },
+      const  store= useStore();
+      store.isLoading=true;
 
+    },
     /**
      * 不显示Loading
      */
     _dismissLoading() {
-      Toast.clear();
+      const  store= useStore();
+      store.isLoading=false;
     },
 
     // 事件统计埋点
@@ -461,13 +466,9 @@ const baseMixin= {
       }
     },
     //显示自定义toast
-    _showIconToast(msg,className) {
+    _showIconToast(msg) {
       if (msg) {
-        Toast({
-          message: msg,
-          type:'success',
-          className:className
-        });
+        showSuccessToast(msg);
       }
     },
     gotoGooglePlay(appName) {

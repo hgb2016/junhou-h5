@@ -2,6 +2,7 @@
  * Created by tangbull on 2018/9/10.
  * 用于连接JSBridge，方便android和js互相调用
  */
+
 require('./bridgeEx');
 
 let bridge = window.bridge;

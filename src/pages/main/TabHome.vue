@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="f-c-ac-jc">
+      Home
   </div>
 </template>
 
@@ -21,9 +22,12 @@ export default {
   mounted() {
   },
   methods:{
+    jump(){
+      this._routePush('FactoryMain');
+    },
     setData() {
-      this.store.userInfo = "dkasjdkaj";
-      this.store.applyInfo = {data:"我是"};
+      this.store.userInfo = "Tangbull";
+      this.store.applyInfo = this.$mock.TEST_COMMON_PARAMS;
       this.store.loginData = "1241";
     },
     clearData(){

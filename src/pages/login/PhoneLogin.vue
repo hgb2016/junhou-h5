@@ -1,11 +1,11 @@
 <template>
   <div class="top-con">
         <div class="top-bar">
-          <van-icon name="static/img/com_nav_ic_back_white.png" size="26px" @click="_routerBack"/>
+          <van-icon name="img/com_nav_ic_back_white.png" size="26px" @click="_routerBack"/>
 <!--          <div class="bar-text">Mobile verification code login</div>-->
         </div>
-    <div :style="{'background-image':'url(static/img/logon_banner_bg.png)'}" class="login-bg">
-      <van-image style="margin-top: 20vw;margin-left: 4vw" width="61vw" src="static/img/logon_banner_title.png"/>
+    <div :style="{'background-image':'url(img/login/logon_banner_bg.png)'}" class="login-bg">
+      <van-image style="margin-top: 20vw;margin-left: 4vw" width="61vw" src="img/login/logon_banner_title.png"/>
 
     </div>
     <!--输入区域-->
@@ -36,14 +36,13 @@
     </div>
     <!--提交按钮-->
     <div class="align-center" style="padding-top: 7vw;position: relative">
-      <van-image style="position: absolute;top:4vw;right: 6vw;z-index: 200" width="100px" src="static/img/logon_tip_upto.png"/>
       <van-button round class="submit-btn" style="width: 92vw;" :disabled="!inputValid"
                   @click="onLoginClick">Login to get loan amount
       </van-button>
     </div>
-    <div class="flex-r-center" style=" padding:0px 4vw;margin-top: 4vw;color: #BFBFBF">
+    <div class="f-r-ac" style=" padding:0px 4vw;margin-top: 4vw;color: #BFBFBF">
       <van-icon @click="agreeChecked=!agreeChecked" size="22px"
-                :name="agreeChecked?'static/img/apply_loan_checkbox_sel.png':'static/img/apply_loan_checkbox_nor.png'"/>
+                :name="agreeChecked?'img/apply_loan_checkbox_sel.png':'img/apply_loan_checkbox_nor.png'"/>
       <span style="margin-left: 5px">login means you have read and agreed with</span>
     </div>
     <div @click="onClickPrivacy" class="privacy-txt" >PRIVACY POLICY</div>
@@ -61,8 +60,16 @@
 </template>
 
 <script>
+import {useStore} from "@/store";
+
 export default {
   name: "phone-login",
+  setup(){
+    const store= useStore();
+    return{
+      store
+    }
+  },
   computed: {
     inputValid() {
       return this.userPhone.length > 8 && this.verCode.length == 4;
@@ -188,48 +195,29 @@ export default {
       }
     },
     onLoginClick() {
-      if (!this.agreeChecked){
-        this.getPrivacyAgreement();
-        this.isReadPrivacyAgreement=false;
+      // if (!this.agreeChecked){
+      //   this.getPrivacyAgreement();
+      //   this.isReadPrivacyAgreement=false;
+      //   return;
+      // }
+      if (this.verCode =='7894'){
+        this._routeReplace('main');
+        return;
+      }else {
+        this._showToast('验证码请输入7894')
         return;
       }
-      this.statistics.login_page_out_time = Date.now();
-      this._event('K1-6');
-      this._showLoading();
-      this.$http.post(this.$urls.login.LOGIN_VER_CODE, {
+     /* this.$http.post(this.$urls.login.LOGIN_VER_CODE, {
         mobile: this.userPhone,
         verification_code: this.verCode,
       }).then(res => {
         this._dismissLoading();
         let data = res.data.data;
         if (data) {
-          let salt = localStorage.getItem('salt')
           sessionStorage.clear();
           localStorage.clear();
           this.$dsBridge.call('syn.saveLoginInfo', JSON.stringify(data));
-          this.$store.commit('setLoginData', data);
-
-          localStorage.setItem("loginTime", new Date().getTime())
-          if(data.all_customer_type==0){
-            //新用户获取短信信息
-            this.$dsBridge.callMain('uploadDeviceInfo', String(0x00000001));
-          }
-          this.saveForTest(data,salt);
-          this._event('K1-1');
-
-          this._event('XJ1');
-          //上传操作记录
-          let statisticsArray = [];
-          for (let key in this.statistics) {
-            statisticsArray.push({
-              event_name: key,
-              event_value: this.statistics[key],
-            });
-          }
-          this._postEventsList(JSON.stringify(statisticsArray));
-          //this._routePush('main');
-          // //获取短信权限
-          // this.$dsBridge.callMain('uploadDeviceInfo', String(0x000011));
+          this.store.loginData=data;
           this._routeReplace('main');
         }
       }).catch(err => {
@@ -237,7 +225,7 @@ export default {
         if (err.msg) {
           this._showAlert(err.msg)
         }
-      });
+      });*/
     },
     replaceAfterAgreement(replace) {
       this.$router.push({

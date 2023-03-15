@@ -11,6 +11,8 @@ export const useStore =  defineStore('main',{
       userInfo: null,
       // 当前账单
       currentBill: null,
+      //是否
+      isLoading:false
     }
   },
   getters:{
@@ -22,8 +24,6 @@ export const useStore =  defineStore('main',{
     }*/
   },
   actions:{
-    reset(){
-      useStore().$reset();
-    },
+
   }
 })

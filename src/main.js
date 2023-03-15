@@ -11,13 +11,16 @@ import dsBridge from './jsbridge/dsBridge'
 import {bridge, bridgeEx} from './jsbridge';
 import ConstData from "@/constants/ConstData";
 import 'vant/lib/index.css';
-// import store from "./vuex";
+import 'vant/es/toast/style';
+import 'vant/es/dialog/style';
+import 'vant/es/notify/style';
+import 'vant/es/image-preview/style';
 import './style/common.less'
+import mock from "@/mock";
 
 const app = createApp(App);
 app.use(router);
 app.use(i18n);
-// app.use(store);
 app.mixin(VueMixin);
 app.use(ConfigProvider)
 app.use(createPinia())
@@ -28,4 +31,5 @@ app.config.globalProperties.$dsBridge = dsBridge;
 app.config.globalProperties.$bridge = bridge;
 app.config.globalProperties.$bridgeEx = bridgeEx;
 app.config.globalProperties.$ConstData = ConstData;
+app.config.globalProperties.$mock = mock;
 app.mount('#app');

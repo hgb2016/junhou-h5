@@ -4,13 +4,16 @@
 </template>
 
 <script>
+  import {useStore} from "@/store";
+
   export default {
     name: "logout-page",
     mounted() {
       this._clearHistory();
       localStorage.clear();
       sessionStorage.clear();
-      this.$store.commit('resetState');
+      const store= useStore();
+      store.$reset();
       this.$dsBridge.call('syn.logout', '');
       // 回到闪屏
       setTimeout(() => {
