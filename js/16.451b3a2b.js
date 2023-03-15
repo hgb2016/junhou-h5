@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunktest"]=self["webpackChunktest"]||[]).push([[16],{5016:function(e,t,n){n.r(t),n.d(t,{default:function(){return c}});var u=n(6252);function r(e,t,n,r,s,a){return(0,u.wg)(),(0,u.iD)("div")}var s={name:"SplashPage",mounted(){this._routePush("PhoneLogin")}},a=n(3744);const o=(0,a.Z)(s,[["render",r],["__scopeId","data-v-41b21522"]]);var c=o}}]);
