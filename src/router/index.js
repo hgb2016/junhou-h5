@@ -10,6 +10,7 @@ const PhoneLogin = () => import('../pages/login/PhoneLogin');
 const FactoryTranslation = () => import('../pages/factory/FactoryTranslation');
 const ContactUs = () => import('../pages/mine/ContactUs');
 const SetPage = () => import('../pages/mine/SetPage');
+const LiveDetectPage = () => import('../pages/factory/LiveDetectPage');
 
 
 const routes = [
@@ -28,6 +29,7 @@ const routes = [
   {name: 'PhoneLogin', component: PhoneLogin},
   {name: 'SetPage', component: SetPage},
   {name: 'ContactUs', component: ContactUs},
+  {name: 'LiveDetectPage', component: LiveDetectPage},
   {name: 'FactoryTranslation', component: FactoryTranslation},
 ];
 

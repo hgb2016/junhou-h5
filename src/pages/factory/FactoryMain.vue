@@ -8,6 +8,7 @@
         <van-cell title="Face Detect" is-link @click="onFaceLiveClick"></van-cell>
         <van-cell title="Take Photo" is-link @click="onTakePhotoClick"></van-cell>
         <van-cell title="Fill UserInfo" is-link @click="onFillUserInfo"></van-cell>
+        <van-cell title="LiveDetectPage" is-link to="LiveDetectPage"></van-cell>
       </van-cell-group>
     </div>
 
