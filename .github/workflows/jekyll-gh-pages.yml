@@ -1,4 +1,4 @@
-name: CI Github Pages
+name: pages-build-deployment
 on:
   #监听push操作
   push:
