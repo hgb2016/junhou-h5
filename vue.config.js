@@ -1,13 +1,31 @@
 const {VantResolver, VarletUIResolver} = require("unplugin-vue-components/resolvers");
 const ComponentsPlugin = require("unplugin-vue-components/webpack");
+const TerserPlugin = require("terser-webpack-plugin");
 const sdate = require('silly-datetime');
 const path = require("path");
+const { config } = require("process");
 // const webpackAanalyzer = require('webpack-bundle-analyzer');
 
 module.exports = {
   publicPath: './',
   productionSourceMap: false,
   // chunks:[], // 和下边的  cacheGroups  相匹配
+  configureWebpack: () => {
+    config.externals = {}
+    if (process.env.NODE_ENV === 'prod') {
+      const plugins = []
+      plugins.push(
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              pure_funcs: ['console.log'] // 移除console
+            },
+          },
+        })
+      )
+      config.plugins = [...config.plugins, ...plugins]
+    }
+  },
   chainWebpack: config => {
     config.plugins.delete('prefetch');
     config.plugins.delete('preload');
