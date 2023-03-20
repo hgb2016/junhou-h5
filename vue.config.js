@@ -4,7 +4,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const sdate = require('silly-datetime');
 const path = require("path");
 const { config } = require("process");
-// const webpackAanalyzer = require('webpack-bundle-analyzer');
+const webpackAanalyzer = require('webpack-bundle-analyzer');
 
 module.exports = {
   publicPath: './',
@@ -33,7 +33,7 @@ module.exports = {
       args[0]['process.env'].PACK_DATE = JSON.stringify(sdate.format(new Date(), 'YYYYMMDD HHmmss'));
       return args;
     });
-    // config.plugin('webpack-bundle-analyzer').use(webpackAanalyzer.BundleAnalyzerPlugin)
+    config.plugin('webpack-bundle-analyzer').use(webpackAanalyzer.BundleAnalyzerPlugin)
     // 打包体积优化
     // 分包加载
     config.merge({
@@ -48,6 +48,34 @@ module.exports = {
           automaticNameDelimiter: '.',
           cacheGroups: {
             // 配置准备分包的组件和插件
+            'node-package-1': {
+              name: 'node-package-1',
+              test: /[\\/]node_modules[\\/](varlet)/,
+              priority: 10,
+              enforce: true,
+              reuseExistingChunk: true//避免重复打包
+            },
+            'node-package-2': {
+              name: 'node-package-2',
+              test: /[\\/]node_modules[\\/](vant)/,
+              priority: 10,
+              enforce: true,
+              reuseExistingChunk: true//避免重复打包
+            },
+            'node-package-3': {
+              name: 'node-package-3',
+              test: /[\\/]node_modules[\\/](vue)/,
+              priority: 10,
+              enforce: true,
+              reuseExistingChunk: true//避免重复打包
+            },
+            'node-package-4': {
+              name: 'node-package-4',
+              test: /[\\/]node_modules[\\/]/,
+              priority: 1,
+              enforce: true,
+              reuseExistingChunk: true//避免重复打包
+            },
           }
         },
         // 只有在生产环境才分包
